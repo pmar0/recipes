@@ -21,7 +21,6 @@ class Recipe:
         query = "SELECT * FROM recipes;"
         recipes_from_db = connectToMySQL(Recipe.db).query_db(query)
         recipes = []
-    
         for recipe in recipes_from_db:
             recipes.append(cls(recipe))
     
