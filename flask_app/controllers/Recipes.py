@@ -18,7 +18,7 @@ def process_recipe():
             'user_id': session['user_id'],
             'name': request.form['name'],
             'description': request.form['description'],
-            'pinstructions': request.form['instructions'],
+            'instructions': request.form['instructions'],
             'date_made': request.form['date_made'],
             'under_30': request.form['under_30'],
         }
