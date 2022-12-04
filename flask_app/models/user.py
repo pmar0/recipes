@@ -30,16 +30,18 @@ class User:
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s"
-        if connectToMySQL(User.db).query_db(query,data):
-            user = cls(connectToMySQL(User.db).query_db(query,data)[0])
+        result = connectToMySQL(User.db).query_db(query,data)
+        if result:
+            user = cls(result[0])
             return user
         return False
 
     @classmethod
     def get_by_id(cls,data):
         query = "SELECT * FROM users WHERE id = %(id)s"
-        if connectToMySQL(User.db).query_db(query,data):
-            user = cls(connectToMySQL(User.db).query_db(query,data)[0])
+        result = connectToMySQL(User.db).query_db(query,data)
+        if result:
+            user = cls(result[0])
             return user
         return False
 

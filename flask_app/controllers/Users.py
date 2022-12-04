@@ -3,11 +3,11 @@ from flask import render_template, redirect, request, session
 from flask_app.models.user import User
 from flask_app.models.recipe import Recipe
 
-@app.errorhandler(404)
-def error(e):
-    return redirect('/user/login')
+# @app.errorhandler(404)
+# def error(e):
+#     return redirect('/user/login')
 
-@app.route('/user/login/')
+@app.route('/user/login')
 def login():
     if 'user_id' not in session:
         return render_template('index.html')
@@ -31,7 +31,7 @@ def register_success():
     session['user_id'] = user_id
     return redirect('/dashboard')
 
-@app.route('/dashboard/')
+@app.route('/dashboard')
 def dashboard():
     if 'user_id' in session:
         user = User.get_by_id({"id":session['user_id']})
@@ -39,7 +39,7 @@ def dashboard():
             return render_template('dashboard.html', user=user, recipes=Recipe.get_all())
     return redirect('/user/login')
 
-@app.route('/user/logout/')
+@app.route('/user/logout')
 def logout():
     if 'user_id' in session:
         session.clear()
