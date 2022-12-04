@@ -18,7 +18,7 @@ def process_recipe():
             'user_id': session['user_id'],
             'name': request.form['name'],
             'description': request.form['description'],
-            'instructions': request.form['instructions'],
+            'pinstructions': request.form['instructions'],
             'date_made': request.form['date_made'],
             'under_30': request.form['under_30'],
         }
@@ -65,4 +65,4 @@ def destroy_recipe(id):
         return redirect('/user/login')
 
     Recipe.destroy({'id':id})
-    return redirect('dashboard.html')
+    return redirect('/dashboard')
